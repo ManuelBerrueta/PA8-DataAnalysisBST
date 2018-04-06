@@ -5,9 +5,19 @@
 class BST
 {
 public:
+	BST();
+	~BST();
 
+	Node *& getmpRoot();
+	void setmpRoot(Node *& newNode);
+	void insert(string newData, int newUnits);
+	void inOrderTraversal();
+	TransactionNode *& findSmallest();
+	TransactionNode *& findLArgest();
 
 private:
-
-
+	Node * mpRoot;
+	void destroyTree(Node *pTree);
+	void insert(Node *& pTree, string newData, int newUnits);
+	void inOrderTraversal(Node *& pTree);
 };

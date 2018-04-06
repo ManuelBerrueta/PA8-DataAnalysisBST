@@ -9,7 +9,7 @@ public:
 	~TransactionNode();
 
 	int getUnits();
-	void setUnits();
+	void setUnits(int newUnits);
 
 	void printData();
 
