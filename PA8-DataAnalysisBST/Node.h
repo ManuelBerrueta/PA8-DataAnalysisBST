@@ -25,6 +25,7 @@ class Node
 {
 public:
 	Node(string &newData);
+	//Allows for the outer Node (Transaction Node) to get delted then
 	virtual ~Node();
 
 	string getData();

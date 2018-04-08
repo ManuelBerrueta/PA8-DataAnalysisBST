@@ -30,6 +30,56 @@ void BST::inOrderTraversal()
 	inOrderTraversal(mpRoot);
 }
 
+TransactionNode & BST::findSmallest()
+{
+	Node *pTreeCur = mpRoot;// need another pointer
+
+	//
+	while (pTreeCur != nullptr)
+	{
+		if (pTreeCur->getmpLeft() == nullptr)
+		{
+			cout << "-=== Smallest ===-" << endl;
+			pTreeCur->printData();
+			return *(dynamic_cast <TransactionNode*>(pTreeCur));
+		}
+		pTreeCur = pTreeCur->getmpLeft();
+	}
+
+	/*if (pTreeCur == nullptr)
+	{
+		return;
+	}
+	else
+	{
+		findSmallest(pT->getmpLeft());
+		if (pTree->getmpLeft == nullptr)
+		{
+			cout << "Smallest sold: " << endl;
+			pTree->printData();
+		}
+	}*/
+
+}
+
+TransactionNode & BST::findLargest()
+{
+	Node *pTreeCur = mpRoot;// need another pointer
+
+							//
+	while (pTreeCur != nullptr)
+	{
+		if (pTreeCur->getmpRight() == nullptr)
+		{
+			cout << "-=== Largest ===-" << endl;
+			pTreeCur->printData();
+
+			return *(dynamic_cast <TransactionNode*>(pTreeCur));
+		}
+		pTreeCur = pTreeCur->getmpRight();
+	}
+}
+
 void BST::destroyTree(Node * pTree)
 {
 	//PostOrder traversal delete function

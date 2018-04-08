@@ -4,23 +4,33 @@ void DataAnalysis::openFile()
 {
 	mCsvSTream.open("data.csv", ios::in);
 
+
 }
 
-bool DataAnalysis::parseFile(ifstream inFile)
+TransactionNode *& DataAnalysis::parseFile(ifstream inFile)
 {
+	TransactionNode * tempNode = nullptr;
 	bool done = false;
 	string tempUnits;
 	string tempType;
 	string tempTransaction;
 
 	getline(inFile, tempUnits, ',');
+	//change string to int
+	tempNode->setUnits(std::stoi(tempUnits));
 	getline(inFile, tempType, ',');
-	getline(inFile, tempTransaction, ',');
+	tempNode->setData(tempType);
+	getline(inFile, tempTransaction);
 
-	return done;
+	return tempNode;
 }
 
 void DataAnalysis::getFileData()
 {
+	//TransactionNode TempNode
+
+		//parsefile
+
+	
 	//while(parseFile())
 }

@@ -12,8 +12,8 @@ public:
 	void setmpRoot(Node *& newNode);
 	void insert(string newData, int newUnits);
 	void inOrderTraversal();
-	TransactionNode *& findSmallest();
-	TransactionNode *& findLArgest();
+	TransactionNode & findSmallest();
+	TransactionNode & findLargest();
 
 private:
 	Node * mpRoot;
