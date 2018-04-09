@@ -39,7 +39,7 @@ TransactionNode & BST::findSmallest()
 	{
 		if (pTreeCur->getmpLeft() == nullptr)
 		{
-			cout << "-=== Smallest ===-" << endl;
+			//cout << "-=== Smallest ===-" << endl;
 			pTreeCur->printData();
 			return *(dynamic_cast <TransactionNode*>(pTreeCur));
 		}
@@ -71,7 +71,7 @@ TransactionNode & BST::findLargest()
 	{
 		if (pTreeCur->getmpRight() == nullptr)
 		{
-			cout << "-=== Largest ===-" << endl;
+			//cout << "-=== Largest ===-" << endl;
 			pTreeCur->printData();
 
 			return *(dynamic_cast <TransactionNode*>(pTreeCur));

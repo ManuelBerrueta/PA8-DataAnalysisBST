@@ -64,7 +64,9 @@ void DataAnalysis::getFileData()
 		cout << tempNode->getData();
 	}
 
+	cout << "==== Sold Products =====" << endl;
 	mTreeSold.inOrderTraversal();
+	cout << "==== Purchased Products =====" << endl;
 	mTreePurchased.inOrderTraversal();
 	
 	//while(parseFile())
@@ -84,13 +86,22 @@ void DataAnalysis::compareInsert(TransactionNode *& newNode, string transactionT
 
 void DataAnalysis::printDatAnalysis()
 {
+	cout << "=== Data Analysis of Most Purchased and sold ====" << endl;
 	cout << "Least Purchased" << endl;
-	cout << "Type: " << mTreePurchased.findSmallest().getData() << "Units: " << mTreePurchased.findSmallest().getUnits() << endl << endl;
+	mTreePurchased.findSmallest();
+	cout << endl;
+	//cout << "Type: " << mTreePurchased.findSmallest().getData() << "Units: " << mTreePurchased.findSmallest().getUnits() << endl << endl;
 	cout << "Least Sold" << endl;
-	cout << "Type: " << mTreeSold.findSmallest().getData() << "Units: " << mTreeSold.findSmallest().getUnits() << endl;
+	mTreeSold.findSmallest();
+	cout << endl;
+	//cout << "Type: " << mTreeSold.findSmallest().getData() << "Units: " << mTreeSold.findSmallest().getUnits() << endl;
 	cout << "Most Purchased" << endl;
-	cout << "Type: " << mTreePurchased.findLargest().getData() << "Units: " << mTreePurchased.findLargest().getUnits() << endl << endl;
+	mTreePurchased.findLargest();
+	cout << endl;
+	//cout << "Type: " << mTreePurchased.findLargest().getData() << "Units: " << mTreePurchased.findLargest().getUnits() << endl << endl;
 	cout << "Most Sold" << endl;
-	cout << "Type: " << mTreeSold.findLargest().getData() << "Units: " << mTreeSold.findLargest().getUnits() << endl;
+	mTreeSold.findLargest();
+	cout << endl;
+	//cout << "Type: " << mTreeSold.findLargest().getData() << "Units: " << mTreeSold.findLargest().getUnits() << endl;
 
 }
