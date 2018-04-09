@@ -2,53 +2,31 @@
 
 void DataAnalysis::runAnalysis()
 {
+	openFile();
 	getFileData();
 	printDatAnalysis();
 }
 
-void DataAnalysis::openFile(ifstream & fileDoWork)
+void DataAnalysis::openFile()
 {
-	fileDoWork.open("data.csv", std::ios::in);
+	mCsvStream.open("data.csv", std::ios::in);
 }
 
-bool DataAnalysis::parseFile(ifstream *inFile, TransactionNode *& dataNode)
+bool DataAnalysis::parseFile(TransactionNode *& dataNode, string &transactionType)
 {
-	//TransactionNode * tempNode = nullptr;
-	bool done = false;
+	bool notDone = false;
 	string tempUnits;
 	string tempType;
-	string tempTransaction;
-	mCsvStream.open("data.csv", std::ios::in);
-	getline(mCsvStream, tempUnits);
 
-	//infile not working
-	//getline(*inFile, tempUnits, ',');
-	//getline(*inFile, tempType, ',');
-
-	//getline(*inFile, tempTransaction);
-	while (getline(mCsvStream, tempUnits, ','))
+	if (getline(mCsvStream, tempUnits, ','))
 	{
+		notDone = true;
 		getline(mCsvStream, tempType, ',');
-		getline(mCsvStream, tempTransaction);
+		getline(mCsvStream, transactionType);
 		dataNode = new TransactionNode(tempType, std::stoi(tempUnits));
-		compareInsert(dataNode, tempTransaction);
+		compareInsert(dataNode, transactionType);
 	}
-
-
-	//change string to int
-	//dataNode->setUnits(std::stoi(tempUnits));
-	//dataNode->setData(tempType);
-
-
-	/*
-	if (getline)
-
-	else
-	bool =false
-	
-	*/
-	
-	return done;
+	return notDone;
 }
 
 void DataAnalysis::getFileData()
@@ -57,22 +35,19 @@ void DataAnalysis::getFileData()
 	//openFile(mCsvStream);
 	//TransactionNode TempNode
 	TransactionNode *tempNode;
+	string transactionType;
+	string garbage;
+	getline(mCsvStream, garbage);
 
-
-	while (parseFile(&mCsvStream, tempNode)) //This is working, node and data are created
-	{
-		cout << tempNode->getData();
-	}
+	while (parseFile(tempNode, transactionType)) 
 
 	cout << "==== Sold Products =====" << endl;
 	mTreeSold.inOrderTraversal();
 	cout << "==== Purchased Products =====" << endl;
 	mTreePurchased.inOrderTraversal();
-	
-	//while(parseFile())
 }
 
-void DataAnalysis::compareInsert(TransactionNode *& newNode, string transactionType)//This function goes inside parsefile
+void DataAnalysis::compareInsert(TransactionNode *& newNode, string &transactionType)//This function goes inside parsefile
 {
 	if (transactionType == "Purchased")
 	{
@@ -90,18 +65,13 @@ void DataAnalysis::printDatAnalysis()
 	cout << "Least Purchased" << endl;
 	mTreePurchased.findSmallest();
 	cout << endl;
-	//cout << "Type: " << mTreePurchased.findSmallest().getData() << "Units: " << mTreePurchased.findSmallest().getUnits() << endl << endl;
 	cout << "Least Sold" << endl;
 	mTreeSold.findSmallest();
 	cout << endl;
-	//cout << "Type: " << mTreeSold.findSmallest().getData() << "Units: " << mTreeSold.findSmallest().getUnits() << endl;
 	cout << "Most Purchased" << endl;
 	mTreePurchased.findLargest();
 	cout << endl;
-	//cout << "Type: " << mTreePurchased.findLargest().getData() << "Units: " << mTreePurchased.findLargest().getUnits() << endl << endl;
 	cout << "Most Sold" << endl;
 	mTreeSold.findLargest();
 	cout << endl;
-	//cout << "Type: " << mTreeSold.findLargest().getData() << "Units: " << mTreeSold.findLargest().getUnits() << endl;
-
 }
