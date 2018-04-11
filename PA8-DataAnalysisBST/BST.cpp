@@ -53,7 +53,6 @@ TransactionNode & BST::findLargest()
 	{
 		if (pTreeCur->getmpRight() == nullptr)
 		{
-			//cout << "-=== Largest ===-" << endl;
 			pTreeCur->printData();
 
 			return *(dynamic_cast <TransactionNode*>(pTreeCur));
@@ -95,7 +94,6 @@ void BST::insert(Node *& pTree, string newData, int newUnits)
 	{
 		//cout << "Duplicate Ignored" << endl;
 	}
-
 }
 
 void BST::inOrderTraversal(Node *& pTree)

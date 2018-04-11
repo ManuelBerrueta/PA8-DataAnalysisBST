@@ -7,7 +7,6 @@ class BST
 public:
 	BST();
 	~BST();
-
 	Node *& getmpRoot();
 	void setmpRoot(Node *& newNode);
 	void insert(string newData, int newUnits);

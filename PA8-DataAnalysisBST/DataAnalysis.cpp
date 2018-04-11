@@ -31,23 +31,23 @@ bool DataAnalysis::parseFile(TransactionNode *& dataNode, string &transactionTyp
 
 void DataAnalysis::getFileData()
 {
-	//Notworking openfile
-	//openFile(mCsvStream);
-	//TransactionNode TempNode
 	TransactionNode *tempNode;
 	string transactionType;
 	string garbage;
 	getline(mCsvStream, garbage);
 
-	while (parseFile(tempNode, transactionType)) 
+	while (parseFile(tempNode, transactionType))
+	{
+	}
 
 	cout << "==== Sold Products =====" << endl;
 	mTreeSold.inOrderTraversal();
 	cout << "==== Purchased Products =====" << endl;
 	mTreePurchased.inOrderTraversal();
+	cout << endl << endl;
 }
 
-void DataAnalysis::compareInsert(TransactionNode *& newNode, string &transactionType)//This function goes inside parsefile
+void DataAnalysis::compareInsert(TransactionNode *& newNode, string &transactionType)
 {
 	if (transactionType == "Purchased")
 	{
@@ -61,13 +61,15 @@ void DataAnalysis::compareInsert(TransactionNode *& newNode, string &transaction
 
 void DataAnalysis::printDatAnalysis()
 {
-	cout << "=== Data Analysis of Most Purchased and sold ====" << endl;
+	cout << "==== Data Analysis ====" << endl << endl;
+	cout << "==== Least Purchased & Least Sold ====" << endl;
 	cout << "Least Purchased" << endl;
 	mTreePurchased.findSmallest();
 	cout << endl;
 	cout << "Least Sold" << endl;
 	mTreeSold.findSmallest();
-	cout << endl;
+	cout << endl << endl;
+	cout << "==== Most Purchased & Most Sold ====" << endl;
 	cout << "Most Purchased" << endl;
 	mTreePurchased.findLargest();
 	cout << endl;
